@@ -22,6 +22,7 @@ export const App = () => {
     }
     async function findImages() {
       try {
+        setLoading(true);
         const response = await fetchImages(query, page);
         const images = response.hits.map(
           ({ id, webformatURL, largeImageURL, tags }) => ({
@@ -39,7 +40,6 @@ export const App = () => {
         setLoading(false);
       }
     }
-    setLoading(true);
     findImages();
   }, [query, page]);
 
